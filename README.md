@@ -1,9 +1,6 @@
 # OpenCart Manual Testing Project
-
 A complete manual testing project for the OpenCart e-commerce demo application, covering functional and UI testing across 12 modules.
-
 ## Project Overview
-
 | Item | Details |
 |---|---|
 | Application Tested | OpenCart Demo |
@@ -11,7 +8,6 @@ A complete manual testing project for the OpenCart e-commerce demo application, 
 | Testing Type | Manual Testing |
 | Test Management | Microsoft Excel |
 | Bug Tracking | Jira |
-
 ## Modules Tested
 1. User Registration
 2. User Login
@@ -25,15 +21,17 @@ A complete manual testing project for the OpenCart e-commerce demo application, 
 10. Shopping Cart: Add to Cart (Product Detail Page)
 11. Order Confirmation
 12. Checkout
-
 ## Testing Artifacts
 - **Test Plan**: defines scope, objectives, environment, and entry/exit criteria
 - **Test Scenarios**: 12 high level scenarios covering all modules
 - **Test Cases**: detailed test cases with steps, test data, expected and actual results, and pass/fail status
-- **Bug Reports**: 7 bugs logged and tracked in Jira with screenshots and severity/priority classification
+- **Bug Reports**: 9 bugs logged and tracked in Jira with screenshots and severity/priority classification
+
+## Checkout Regression Note
+During test execution, the Checkout flow was found to behave differently for logged-in users than originally designed against — Billing and Shipping Address sections no longer render for any authenticated user, and no payment methods are available, blocking order completion (see OMT-8, OMT-9). This was verified across multiple accounts and confirmed absent only in guest checkout, which still displays the full flow correctly, indicating the defect is tied to authenticated sessions generally, not a single account's configuration. As a result, several Checkout and Order Confirmation test cases are marked Blocked, with root cause traced to these two defects.
+
 
 ## Bugs Found
-
 | Bug ID | Summary | Severity | Priority |
 |---|---|---|---|
 | OMT-1 | Privacy policy checkbox missing * symbol | Medium | Medium |
@@ -43,7 +41,8 @@ A complete manual testing project for the OpenCart e-commerce demo application, 
 | OMT-5 | Invalid quantity silently removes cart items | High | High |
 | OMT-6 | Invalid quantity on product page shows misleading success message | Medium | Medium |
 | OMT-7 | Negative quantity on product page silently removes cart items | High | High |
-
+| OMT-8 | Logged-in checkout skips Billing/Shipping Details sections | High | Highest |
+| OMT-9 | Payment Method dropdown shows no available options at checkout | High | Highest |
 ## Tools Used
 - Microsoft Excel (test cases and scenarios)
 - Jira (bug tracking)
